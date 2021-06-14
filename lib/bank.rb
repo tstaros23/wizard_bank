@@ -5,13 +5,13 @@ class Bank
     @balance = 0
   end
 
-  def open_account(person, bank)
+  def open_account(person)
     @bank_account << person
   end
 
   def deposit(person, deposit)
     cash = person.galleon - deposit
-    @balance = deposit
+    @balance += deposit
     if deposit > person.galleon
       p "insufficient funds"
     else
@@ -20,11 +20,11 @@ class Bank
   end
 
   def withdrawal(person, withdrawal)
-    balance = @balance - withdrawal
+    new_balance = @balance - withdrawal
       if withdrawal > @balance
         p "Insufficient funds"
       else
-        p "Minerva has withdrawn #{withdrawal} galleons. Balance: #{balance}"
+        p "Minerva has withdrawn #{withdrawal} galleons. Balance: #{new_balance}"
       end
   end
 

@@ -39,11 +39,19 @@ RSpec.describe Bank do
     person2 = Person.new("Luna", 500)
 
     expect(chase.deposit(person1, 500)).to eq("500 galleons have been deposited into Minerva's Chase account. Balance: 500 cash: 500")
+  end
 
+  it "does not allow too big of a withdrawal" do
+
+    chase = Bank.new("JP Morgan Chase")
+    wells_fargo = Bank.new("Wells Fargo")
+    person1 = Person.new("Minerva", 1000)
+    person2 = Person.new("Luna", 500)
+    
     chase.deposit(person1, 500)
-    chase.withdrawal(person1, 250)
-    expect(chase.withdrawal(person1, 275)).to eq("Insufficient funds")
+    chase.withdrawal(person1, 10)
 
+    expect(chase.withdrawal(person1, 600)).to eq("Insufficient funds")
 
   end
 end
