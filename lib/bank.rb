@@ -5,7 +5,7 @@ class Bank
     @balance = 0
   end
 
-  def open_account(person)
+  def open_account(person, bank)
     @bank_account << person
   end
 
@@ -21,7 +21,11 @@ class Bank
 
   def withdrawal(person, withdrawal)
     balance = @balance - withdrawal
-    p "Minerva has withdrawn #{withdrawal} galleons. Balance: #{balance}"
+      if withdrawal > @balance
+        p "Insufficient funds"
+      else
+        p "Minerva has withdrawn #{withdrawal} galleons. Balance: #{balance}"
+      end
   end
 
 end
