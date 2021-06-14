@@ -1,5 +1,6 @@
 class Person
-  attr_reader(:name, :galleon)
+  attr_accessor :galleon
+  attr_reader(:name)
   def initialize(name, galleon)
     @name = name
     @galleon = galleon
