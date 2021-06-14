@@ -2,6 +2,7 @@ class Bank
   def initialize(name)
     @name = name
     @bank_account = []
+    @balance = 0
   end
 
   def open_account(person)
@@ -10,7 +11,7 @@ class Bank
 
   def deposit(person, deposit)
     cash = person.galleon - deposit
-    @bank_account << cash
+    @balance = deposit
     if deposit > person.galleon
       p "insufficient funds"
     else
@@ -18,9 +19,9 @@ class Bank
     end
   end
 
-
-  def withdrawal(person, balance)
-    @bank_account
-
+  def withdrawal(person, withdrawal)
+    balance = @balance - withdrawal
+    p "Minerva has withdrawn #{withdrawal} galleons. Balance: #{balance}"
   end
+
 end
