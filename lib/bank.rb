@@ -8,10 +8,19 @@ class Bank
     @bank_account << person
   end
 
-  def deposit(person)
-    @bank_account << person.galleon
+  def deposit(person, deposit)
+    cash = person.galleon - deposit
+    @bank_account << cash
+    if deposit > person.galleon
+      p "insufficient funds"
+    else
+      p "#{deposit} galleons have been deposited into Minerva's Chase account. Balance: #{deposit} cash: #{cash}"
+    end
   end
 
-  def withdrawal()
+
+  def withdrawal(person, balance)
+    @bank_account
+
   end
 end
