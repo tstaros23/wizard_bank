@@ -63,8 +63,17 @@ RSpec.describe Bank do
     chase = Bank.new("JP Morgan Chase")
     wells_fargo = Bank.new("Wells Fargo")
     person1 = Person.new("Minerva", 1000)
+    person2 = Person.new("Luna", 500)
 
+    chase.open_account(person1)
 
-    expect(chase.transfer(person1, wells_fargo, 250)).to eq("Minerva has transferred 250 galleons from JP Morgan Chase to Wells Fargo.")
+    chase.deposit(person1, 250)
+    expect(chase.transfer(person1, wells_fargo, 250)).to eq("Minerva has transferred 250 galleons from JP Morgan Chase to Wells Fargo.
+    Your JP Morgan bank account has a balance of 0.
+    Your Wells Fargo bank account has a balance of 250")
+    expect(chase.transfer(person2, wells_fargo, 250)).to eq("Luna does not have an account with JP Morgan Chase.")
+    expect(chase.balance).to eq(0)
+    expect(wells_fargo.balance).to eq(250)
+    expect(person1.galleon).to eq(750)
   end
 end

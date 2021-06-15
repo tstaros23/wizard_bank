@@ -12,7 +12,6 @@ class Bank
   end
 
   def deposit(person, deposit)
-    # require "pry"; binding.pry
     has_account = @bank_account.find do |p|
       p == person
     end
@@ -39,11 +38,23 @@ class Bank
   end
 
   def transfer(person, bank, amount)
-    transer_balance = 0
-    transfer_balance = bank.balance + amount
-    new_balance = @balance - amount
+    has_account = @bank_account.find do |p|
+      p == person
+    end
+    if !has_account
+      p "#{person.name} does not have an account with #{@name}."
+    elsif
+      amount > @balance
+      p "Insufficent funds"
+    else
+      @balance -= amount
+      transfer_balance = @balance += amount
 
-    p "Minerva has transferred #{amount} galleons from JP Morgan Chase to #{bank.name}."
+      p "Minerva has transferred #{amount} galleons from #{@name} to #{bank.name}.
+      Your #{@name} bank account has a balance of #{@balance}
+      Your #{bank.name} bank account has a balance of #{transfer_balance}"
+      # require "pry"; binding.pry
+    end
 
   end
 
