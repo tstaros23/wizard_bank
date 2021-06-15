@@ -29,11 +29,12 @@ class Bank
   end
 
   def withdrawal(person, withdrawal)
-    new_balance = @balance - withdrawal
+
       if withdrawal > @balance
         p "Insufficient funds"
       else
-        p "Minerva has withdrawn #{withdrawal} galleons. Balance: #{new_balance}"
+        @balance -= withdrawal
+        p "Minerva has withdrawn #{withdrawal} galleons. Balance: #{@balance}"
       end
   end
 
