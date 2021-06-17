@@ -1,8 +1,14 @@
 class Person
-  attr_accessor :galleon
-  attr_reader(:name)
-  def initialize(name, galleon)
+  attr_accessor :galleons
+  attr_reader :name, :accounts
+
+  def initialize(name, galleons)
     @name = name
-    @galleon = galleon
+    @galleons = galleons
+    @accounts = Hash.new(0)
+  end
+  # hash that includes bank as a key and balance as value
+  def add_account(bank)
+    @accounts[bank.name] = 0
   end
 end
