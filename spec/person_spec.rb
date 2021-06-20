@@ -28,7 +28,7 @@ RSpec.describe Person do
 
     person1.add_account(chase)
 
-    expected = {"JP Morgan Chase" => 0}
+    expected = {chase => 0}
 
     expect(person1.accounts).to eq(expected)
   end

@@ -9,6 +9,6 @@ class Person
   end
   # hash that includes bank as a key and balance as value
   def add_account(bank)
-    @accounts[bank.name] = 0
+    @accounts[bank] = 0
   end
 end
